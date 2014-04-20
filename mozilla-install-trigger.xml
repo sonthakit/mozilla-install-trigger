@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
-	<ModulePrefs author="Sonthakit Leelahanon" height="30" width="40"/>
+	<ModulePrefs title="Mozilla Install Trigger" author="Sonthakit Leelahanon" height="30"/>
 	<UserPref name="url" display_name="URL" required="true" />
 	<UserPref name="hash" display_name="SHA1 Hash" required="true" />
 	<Content type="html">
@@ -25,7 +25,8 @@
 					}
 				}
 			</script>
-			<a id="MozillaInstallTriggerLink" href="" onclick="return install(event);">Here</a>
+			If autoupdate is not work, please install new version by left click at <a id="MozillaInstallTriggerLink" href="" onclick="return install(event);">here</a>
 		]]>
 	</Content>
 </Module>
+
