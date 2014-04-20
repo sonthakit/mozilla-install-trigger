@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Module>
+	<ModulePrefs title="Mozilla Install Trigger" author="Sonthakit Leelahanon"/>
+	<UserPref name="url" display_name="URL" required="true" />
+	<UserPref name="hash" display_name="Hash" required="true" />
+	<UserPref name="linkText" display_name="Link text" required="true" />
+	<Content type="html">
+		<![CDATA[
+			<script type="application/javascript">
+				var prefs = new gadgets.Prefs();
+				var prefUrl = prefs.getString("url");
+				var prefHash = prefs.getString("hash");
+				var prefText = prefs.getString("linkText");
+				document.getElementById("MozillaInstallTriggerLink").innerText = prefText;
+				function install (aEvent) {
+					try {
+						for (var a = aEvent.target; a.href === undefined;) a = a.parentNode;
+						var params = {
+							"Foo": {
+								URL: prefUrl,
+								Hash: prefHash,
+								toString: function () { return this.URL; }
+							}
+						};
+						InstallTrigger.install(params);
+						return false;
+					} catch(e) {
+					}
+				}
+			</script>
+			<a id="MozillaInstallTriggerLink" href="c:/grouAndUsersWorkSpace/MozillaAddon/createtab.xpi" onclick="return install(event);"></a>
+		]]>
+	</Content>
+</Module>
