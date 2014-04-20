@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Module>
-	<ModulePrefs title="Mozilla Install Trigger" author="Sonthakit Leelahanon" height="30" width="40"/>
+	<ModulePrefs author="Sonthakit Leelahanon" height="30" width="40"/>
 	<UserPref name="url" display_name="URL" required="true" />
 	<UserPref name="hash" display_name="SHA1 Hash" required="true" />
 	<Content type="html">
