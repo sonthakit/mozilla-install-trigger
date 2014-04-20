@@ -12,6 +12,7 @@
 				var prefHash = prefs.getString("hash");
 				var prefText = prefs.getString("linkText");
 				document.getElementById("MozillaInstallTriggerLink").innerText = prefText;
+				document.getElementById("MozillaInstallTriggerLink").href = prefUrl;
 				function install (aEvent) {
 					try {
 						for (var a = aEvent.target; a.href === undefined;) a = a.parentNode;
@@ -28,7 +29,8 @@
 					}
 				}
 			</script>
-			<a id="MozillaInstallTriggerLink" href="c:/grouAndUsersWorkSpace/MozillaAddon/createtab.xpi" onclick="return install(event);"></a>
+			<a id="MozillaInstallTriggerLink" href="" onclick="return install(event);">Hallo</a>
 		]]>
 	</Content>
 </Module>
+
