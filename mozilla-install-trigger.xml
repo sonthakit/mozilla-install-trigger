@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- =====================================================================================
+	Mozilla Install Trigger by Sonthakit Leelahanon.
+	Gadget URL
+	http://mozilla-install-trigger.googlecode.com/svn/mozilla-install-trigger.xml
+	example staticText: If autoupdate is not work, please install new version by left click at
+	example linkText: here
+====================================================================================== -->
+
+<Module>
+	<ModulePrefs title="Mozilla Install Trigger" author="Sonthakit Leelahanon" height="30"/>
+	<UserPref name="url" display_name="URL" required="true" />
+	<UserPref name="hash" display_name="SHA1 Hash" required="true" />
+	<UserPref name="staticText" display_name="Static Text" required="true" />
+	<UserPref name="linkText" display_name="Link Text" required="true" />
+	<Content type="html">
+		<![CDATA[
+			<div id=content_div></div>
+			<script type="application/javascript">
+				var prefs = new gadgets.Prefs();
+				var prefUrl = prefs.getString("url");
+				var prefHash = "sha1:" + prefs.getString("hash");
+				var prefStaticText = prefs.getString("staticText");
+				var prefLinkText = prefs.getString("linkText");
+				document.getElementById("content_div").innerHTML = prefStaticText + " <a href='" + prefUrl + "' onclick='return install(event);'>" + prefLinkText + "</a>";
+				function install (aEvent) {
+					try {
+						for (var a = aEvent.target; a.href === undefined;) a = a.parentNode;
+						var params = {
+							"Foo": {
+								URL: prefUrl,
+								Hash: prefHash,
+								toString: function () { return this.URL; }
+							}
+						};
+						InstallTrigger.install(params);
+						return false;
+					} catch(e) {
+					}
+				}
+			</script>
+		]]>
+	</Content>
+</Module>
+
